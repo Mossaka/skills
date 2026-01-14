@@ -17,6 +17,8 @@ equipped with procedural knowledge that no model can fully possess.
 
 **IMPORTANT: Skills are always created in `~/.claude/skills/`**. This is the standard directory where Claude Code looks for skills. Each skill should be in its own subdirectory under `~/.claude/skills/`.
 
+**Version Control:** The `~/.claude/skills/` directory is version-controlled with git and should be pushed to `mossaka/skills` repository. Whenever you create, modify, or delete skills in this directory, you must commit and push the changes to maintain version history and backup.
+
 ### What Skills Provide
 
 1. Specialized workflows - Multi-step procedures for specific domains
@@ -211,10 +213,12 @@ Skill creation involves these steps:
 2. Plan reusable skill contents (scripts, references, assets)
 3. Initialize the skill (run init_skill.py)
 4. Edit the skill (implement resources and write SKILL.md)
-5. Package the skill (run package_skill.py)
+5. Package the skill and commit to version control (run package_skill.py, then git commit and push)
 6. Iterate based on real usage
 
 Follow these steps in order, skipping only if there is a clear reason why they are not applicable.
+
+**Remember:** Always commit and push changes to `~/.claude/skills/` to the `mossaka/skills` repository after creating or modifying skills.
 
 ### Step 1: Understanding the Skill with Concrete Examples
 
@@ -328,7 +332,7 @@ Do not include any other fields in YAML frontmatter.
 
 Write instructions for using the skill and its bundled resources.
 
-### Step 5: Packaging a Skill
+### Step 5: Packaging and Version Control
 
 Once development of the skill is complete, it must be packaged into a distributable .skill file that gets shared with the user. The packaging process automatically validates the skill first to ensure it meets all requirements:
 
@@ -355,6 +359,39 @@ The packaging script will:
 
 If validation fails, the script will report the errors and exit without creating a package. Fix any validation errors and run the packaging command again.
 
+#### Commit and Push Changes to Git
+
+After successfully creating or modifying a skill, you must commit and push changes to the `mossaka/skills` repository:
+
+```bash
+cd ~/.claude/skills
+git add .
+git commit -m "Add/Update <skill-name> skill"
+git push origin main
+```
+
+Example for a new skill:
+```bash
+cd ~/.claude/skills
+git add skill-creator/
+git commit -m "Add skill-creator skill with version control instructions"
+git push origin main
+```
+
+Example for updating an existing skill:
+```bash
+cd ~/.claude/skills
+git add pdf-editor/
+git commit -m "Update pdf-editor skill with improved rotation script"
+git push origin main
+```
+
+**When to commit:**
+- After creating a new skill (Step 3-5)
+- After modifying skill contents (Step 4 or Step 6)
+- After deleting a skill
+- Any time changes are made to `~/.claude/skills/`
+
 ### Step 6: Iterate
 
 After testing the skill, users may request improvements. Often this happens right after using the skill, with fresh context of how the skill performed.
@@ -365,3 +402,13 @@ After testing the skill, users may request improvements. Often this happens righ
 2. Notice struggles or inefficiencies
 3. Identify how SKILL.md or bundled resources should be updated
 4. Implement changes and test again
+5. Commit and push changes to git (following the process in Step 5)
+
+After each iteration that modifies the skill, remember to commit and push:
+
+```bash
+cd ~/.claude/skills
+git add <skill-name>/
+git commit -m "Improve <skill-name>: <brief description of changes>"
+git push origin main
+```
