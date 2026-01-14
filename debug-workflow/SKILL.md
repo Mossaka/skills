@@ -14,7 +14,7 @@ Debug agentic workflow runs using `gh aw audit` and `gh aw logs` commands.
 Investigate a single workflow run with comprehensive error detection:
 
 ```bash
-./gh-aw audit <run-id-or-url> --parse -v
+gh aw audit <run-id-or-url> --parse -v
 ```
 
 **Accepts:**
@@ -37,7 +37,7 @@ Investigate a single workflow run with comprehensive error detection:
 Analyze patterns across multiple workflow executions:
 
 ```bash
-./gh-aw logs [workflow] --count <N> --parse
+gh aw logs [workflow] --count <N> --parse
 ```
 
 **Common options:**
@@ -59,7 +59,7 @@ Analyze patterns across multiple workflow executions:
 Start with the audit command to get a comprehensive overview:
 
 ```bash
-./gh-aw audit <run-url> --parse -v
+gh aw audit <run-url> --parse -v
 ```
 
 Review the generated report for:
@@ -178,7 +178,7 @@ Include:
 
 **Detection:**
 ```bash
-./gh-aw audit <run-id> -v
+gh aw audit <run-id> -v
 grep -E "mcp:.*failed" .github/aw/logs/run-<id>/agent-stdio.log
 ```
 
