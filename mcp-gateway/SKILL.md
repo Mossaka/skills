@@ -21,7 +21,7 @@ The MCP Gateway (`gh-aw-mcpg`) is a proxy server that:
 ### 1. Start the Gateway
 
 ```bash
-./scripts/start-gateway.sh
+python3 scripts/start-gateway.py
 ```
 
 This will:
@@ -62,7 +62,7 @@ Expected response:
 ### 3. Debug Issues
 
 ```bash
-./scripts/debug-gateway.sh
+python3 scripts/debug-gateway.py
 ```
 
 Shows:
@@ -75,7 +75,7 @@ Shows:
 ### 4. Stop the Gateway
 
 ```bash
-./scripts/stop-gateway.sh
+python3 scripts/stop-gateway.py
 ```
 
 Stops and removes the gateway container and any MCP server containers.
@@ -146,7 +146,7 @@ cat config.json | docker run -i \
 ### Setup
 
 ```bash
-./scripts/setup-copilot.sh
+python3 scripts/setup-copilot.py
 ```
 
 This creates `/tmp/mcp-gateway-config.json`:
@@ -276,7 +276,7 @@ curl -v http://host.docker.internal:80/health
 
 **Solution:** Use different host port:
 ```bash
-GATEWAY_PORT=8080 ./scripts/start-gateway.sh
+GATEWAY_PORT=8080 python3 scripts/start-gateway.py
 ```
 
 Then update Copilot config to use port 8080.
@@ -376,7 +376,7 @@ Then update Copilot config to use port 8080.
 
 ```bash
 # Start gateway
-./scripts/start-gateway.sh
+python3 scripts/start-gateway.py
 
 # Check status
 curl http://127.0.0.1:80/health | jq .
@@ -385,13 +385,13 @@ curl http://127.0.0.1:80/health | jq .
 docker logs mcpg-gateway -f
 
 # Debug issues
-./scripts/debug-gateway.sh
+python3 scripts/debug-gateway.py
 
 # Setup Copilot
-./scripts/setup-copilot.sh
+python3 scripts/setup-copilot.py
 
 # Stop gateway
-./scripts/stop-gateway.sh
+python3 scripts/stop-gateway.py
 
 # Restart gateway
 docker restart mcpg-gateway

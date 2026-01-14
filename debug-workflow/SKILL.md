@@ -92,7 +92,7 @@ cd .github/aw/logs/run-<id>/
 Use the quick scan script for rapid error detection:
 
 ```bash
-scripts/quick_scan.sh .github/aw/logs/run-<id>/
+python3 scripts/quick_scan.py .github/aw/logs/run-<id>/
 ```
 
 Or search manually for specific patterns:
@@ -228,7 +228,7 @@ grep "TCP_DENIED\|TAG_NONE" sandbox/firewall/logs/access.log
 
 ## Resources
 
-### scripts/quick_scan.sh
+### scripts/quick_scan.py
 
 Rapid error detection script that scans for common issues:
 - MCP server failures
@@ -240,7 +240,7 @@ Rapid error detection script that scans for common issues:
 
 Usage:
 ```bash
-scripts/quick_scan.sh <log-directory>
+python3 scripts/quick_scan.py <log-directory>
 ```
 
 ### references/common_errors.md

@@ -80,12 +80,14 @@ Every SKILL.md consists of:
 
 ##### Scripts (`scripts/`)
 
-Executable code (Python/Bash/etc.) for tasks that require deterministic reliability or are repeatedly rewritten.
+Executable Python code for tasks that require deterministic reliability or are repeatedly rewritten.
 
+- **IMPORTANT**: All scripts must be written in Python. Python provides better portability, error handling, and maintainability than shell scripts.
 - **When to include**: When the same code is being rewritten repeatedly or deterministic reliability is needed
-- **Example**: `scripts/rotate_pdf.py` for PDF rotation tasks
+- **Example**: `scripts/rotate_pdf.py` for PDF rotation tasks, `scripts/start_gateway.py` for service management
 - **Benefits**: Token efficient, deterministic, may be executed without loading into context
 - **Note**: Scripts may still need to be read by the agent for patching or environment-specific adjustments
+- **Best practice**: Always include proper error handling and informative output messages in Python scripts
 
 ##### References (`references/`)
 
@@ -309,6 +311,8 @@ These files contain established best practices for effective skill design.
 #### Start with Reusable Skill Contents
 
 To begin implementation, start with the reusable resources identified above: `scripts/`, `references/`, and `assets/` files. Note that this step may require user input. For example, when implementing a `brand-guidelines` skill, the user may need to provide brand assets or templates to store in `assets/`, or documentation to store in `references/`.
+
+**IMPORTANT**: All scripts must be written in Python (not Bash or shell scripts). Python provides better error handling, cross-platform compatibility, and maintainability.
 
 Added scripts must be tested by actually running them to ensure there are no bugs and that the output matches what is expected. If there are many similar scripts, only a representative sample needs to be tested to ensure confidence that they all work while balancing time to completion.
 
