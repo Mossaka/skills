@@ -336,16 +336,27 @@ Write instructions for using the skill and its bundled resources.
 
 ### Step 5: Packaging and Version Control
 
-Once development of the skill is complete, it must be packaged into a distributable .skill file that gets shared with the user. The packaging process automatically validates the skill first to ensure it meets all requirements:
+Once development of the skill is complete, it must be packaged into a distributable .skill file that gets shared with the user. The packaging process automatically validates the skill first to ensure it meets all requirements.
+
+**Recommended usage** (outputs to `~/.claude/skills/dist/`):
+
+```bash
+cd ~/.claude/skills/skill-creator
+python3 scripts/package_skill.py ~/.claude/skills/<skill-name> ~/.claude/skills/dist/
+```
+
+Example:
+```bash
+cd ~/.claude/skills/skill-creator
+python3 scripts/package_skill.py ~/.claude/skills/mcp-gateway ~/.claude/skills/dist/
+```
+
+This creates the package file at `~/.claude/skills/dist/<skill-name>.skill`, keeping packaged skills organized separately from skill source directories.
+
+**Alternative** (outputs to current directory, not recommended):
 
 ```bash
 scripts/package_skill.py <path/to/skill-folder>
-```
-
-Optional output directory specification:
-
-```bash
-scripts/package_skill.py <path/to/skill-folder> ./dist
 ```
 
 The packaging script will:
