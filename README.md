@@ -1,6 +1,8 @@
-# Claude Code Skills
+# Agent Skills
 
-This directory contains custom skills for Claude Code that are available globally across all projects.
+This directory contains custom skills for agents that are available globally across all projects.
+
+Learn more about agent skills at https://agentskills.io/home
 
 ## Structure
 
