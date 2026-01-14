@@ -17,9 +17,14 @@ fi
 
 # Clean up any orphaned MCP server containers
 echo "Cleaning up MCP server containers..."
-docker ps -a --format '{{.Names}}' | grep -E 'github-mcp|mcp-server' | while read container; do
-    docker rm -f "$container" 2>/dev/null || true
-    echo "  Removed: $container"
-done
+MCP_CONTAINERS=$(docker ps -a --format '{{.Names}}' | grep -E 'github-mcp|mcp-server' || true)
+if [ -n "$MCP_CONTAINERS" ]; then
+    echo "$MCP_CONTAINERS" | while read container; do
+        docker rm -f "$container" 2>/dev/null || true
+        echo "  Removed: $container"
+    done
+else
+    echo "  No MCP server containers found"
+fi
 
 echo "✓ Cleanup complete"
