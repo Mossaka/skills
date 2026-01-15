@@ -9,7 +9,7 @@ tools:
     - "ls -la */"
     - "find . -name 'SKILL.md' -type f"
     - "cat */SKILL.md"
-    - "head -n * */SKILL.md"
+    - "head -n 20 */SKILL.md"
 safe-outputs:
   create-issue:
     title-prefix: "[skills-list] "
