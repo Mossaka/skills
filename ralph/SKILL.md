@@ -10,7 +10,7 @@ Iterative task execution that runs Claude in a loop to complete PRD tasks autono
 ## Usage
 
 ```bash
-./scripts/ralph <iterations> <prd_file> [progress_file]
+~/.claude/skills/ralph/ralph <iterations> <prd_file> [progress_file]
 ```
 
 **Arguments:**
@@ -21,8 +21,8 @@ Iterative task execution that runs Claude in a loop to complete PRD tasks autono
 ## Examples
 
 ```bash
-./scripts/ralph 10 scripts/prd.md
-./scripts/ralph 10 scripts/prd.md scripts/progress.txt
+~/.claude/skills/ralph/ralph 10 scripts/prd.md
+~/.claude/skills/ralph/ralph 10 scripts/prd.md scripts/progress.txt
 ```
 
 ## Each Iteration
